@@ -1,0 +1,58 @@
+<app-nav></app-nav>
+<div class="container mt-2 p-5">
+    <div class="container shadow my-2 p-4">
+        <div class="mb-2">
+            <h2 class="text-dark text-center text-shadow">Add a new Contact</h2>
+        </div>
+        <div class="card-body p-4">
+            <form #addForm="ngForm" (ngSubmit)="onAdding(name.value,email.value,phone.value,type.value)">
+                <div [class]="isError?'alert alert-danger':'d-none'">
+                    <div>
+                        {{message}}
+                    </div>
+                </div>
+                <div [class]="isSuccess?'alert alert-success':'d-none'">
+                    <div>
+                        {{message}}
+                    </div>
+                </div>
+                <div class="form-group row my-3">
+                    <div class="input-group form-group">
+                        <label for="name" class="col-sm-2 col-form-label">Name</label>
+                        <span class="input-group-text" id="addon-wrapping"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Name" name="fullName" #name>
+                    </div>
+                </div>
+                <div class="form-group row my-3">
+                    <div class="input-group form-group">
+                        <label for="name" class="col-sm-2 col-form-label">Email</label>
+                        <span class="input-group-text" id="addon-wrapping"><i class="fa fa-envelope"></i></span>
+                        <input type="text" class="form-control" placeholder="Email" name="fullName" #email>
+                    </div>
+                </div>
+                <div class="form-group row my-3">
+                    <div class="input-group form-group">
+                        <label for="name" class="col-sm-2 col-form-label">Phone No.</label>
+                        <span class="input-group-text" id="addon-wrapping"><i class="fas fa-phone-alt"></i></span>
+                        <input type="text" class="form-control" placeholder="Phone" name="fullName" #phone>
+                    </div>
+                </div>
+                <div class="form-group row my-3">
+                    <div class="input-group form-group">
+                        <label for="name" class="col-sm-2 col-form-label">Relation</label>
+                        <span class="input-group-text" id="addon-wrapping"><i class="fas fa-user-edit"></i></span>
+                        <select class="form-control" placeholder="Contact Category" name="fullName" #type>
+                            <option value="Relative">Relative</option>
+                            <option value="Friend">Friend</option>
+                            <option value="Work">Work</option>
+                            <option value="Misc.">Misc.</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-outline-dark p-2 mt-2" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<app-nav></app-nav>
+<div class="container card mt-5" *ngIf="contactData.length==0; else elseBlock">
+    <div class="d-flex flex-row-reverse mt-4">
+        <a class="btn btn-success mx-5 mb-4 p-3" routerLink="/contacts/add" style="margin-left: 1500px;">+Add a Contact</a>
+    </div>
+    <div>
+        <h2 class="text-dark text-shadow text-center mt-0 mb-4 p-2" style="background-color: beige;">No Contacts to Show</h2>
+    </div>
+</div>
+<ng-template #elseBlock>
+    <div class="container card mt-5">
+        <div class="d-flex flex-row-reverse mt-4">
+            <a class="btn btn-success mx-5 mb-4 p-3" routerLink="/contacts/add" style="margin-left: 1500px;">+Add a Contact</a>
+        </div>
+        <h1 class="text-dark text-shadow text-center mt-0 mb-4 p-2" style="background-color: beige;">Your Contacts</h1>
+        <div [class]="isError?'alert alert-danger':'d-none'">
+            <div>
+                {{message}}
+            </div>
+        </div>
+        <div [class]="isSuccess?'alert alert-success':'d-none'">
+            <div>
+                {{message}}
+            </div>
+        </div>
+        <table class="table table-striped" style="font-size: 1.2rem;">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"><strong>&nbsp;&nbsp;Name</strong></th>
+                    <th scope="col"><strong>&nbsp;&nbsp;Email</strong></th>
+                    <th scope="col"><strong>&nbsp;Phone</strong></th>
+                    <th scope="col"><strong>&nbsp;Category</strong></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contact of contactData">
+                    <th scope="row"> <i class="fa fa-user fa-2x text-dark text-shadow"></i></th>
+                    <td class="p-3">
+                        <h4 class="text-dark text-shadow">{{contact.ContactName}}</h4>
+                    </td>
+                    <td class="p-3">
+                        <h4 class="text-dark text-shadow">{{contact.ContactEmail}}</h4>
+                    </td>
+                    <td class="p-3">
+                        <h4 class="text-dark text-shadow">{{contact.ContactPhone}}</h4>
+                    </td>
+                    <td class="p-3">
+                        <h4 class="text-dark text-shadow">{{contact.ContactType}}</h4>
+                    </td>
+                    <td><strong><a routerLink="/contacts/edit/{{contact._id}}" class="btn btn-primary">Edit</a></strong></td>
+                    <td><strong><a class="btn btn-danger mx-3" (click)="onDelete(contact._id)">Delete</a></strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-template>

@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary" style="padding: 20px;">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="btn btn-outline-light mt-2" style="padding: 1px;" href="/">
+                        <h3 class="text-shadow text-dark mb-0" style="background: mistyrose; padding: 12px; font-family: mistral; font-size: 2.5rem;">Home</h3>
+                    </a>
+                </li>
+            </ul>
+            <form class="d-flex flex-column">
+                <a routerLink="/login" class="btn btn-outline-light mx-3" style="background-color: cadetblue; " type="submit" *ngIf="isShow">Login</a>
+                <div class="mb-2"></div>
+                <a routerLink="/register" class="btn btn-outline-light mx-3" style="background-color: cadetblue;" type="submit" *ngIf="isShow">Register</a>
+                <span class="input-group-text mx-3" id="addon-wrapping" *ngIf="!isShow"><h6>{{uname}}</h6></span>
+                <div class="mb-2"></div>
+                <a href="/" class="btn btn-outline-light mx-3" type="submit" *ngIf="!isShow" (click)="onLogout()">Logout</a>
+            </form>
+        </div>
+    </div>
+</nav>
